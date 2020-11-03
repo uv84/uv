@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $database_name = "shoppingcartdb";
+    $database_name = "dbms";
     $con = mysqli_connect("localhost","root","uv84",$database_name);
 
     if (isset($_POST["add"])){
@@ -112,7 +112,7 @@
   <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
     <div class="w3-container w3-display-container w3-padding-16">
       <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-      <a href="homephp" class="w3-bar-item w3-button"><b>LOGO</b></a>
+      <h3 class="w3-wide"><b>BUG</b></h3>
     </div>
     <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
       <a href="http://localhost/wdl/index.php" class="w3-bar-item w3-button">Home</a>
@@ -128,7 +128,7 @@
 
   <!-- Top menu on small screens -->
   <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-    <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
+    <div class="w3-bar-item w3-padding-24 w3-wide">BUG</div>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i
         class="fa fa-bars"></i></a>
   </header>
@@ -165,7 +165,7 @@
     <!-- Product grid -->
     <div class="container" style="width: 100%" >
         <?php
-            $query = "SELECT * FROM items ORDER BY id ASC ";
+            $query = "SELECT * FROM website_items ORDER BY id ASC ";
             $result = mysqli_query($con,$query);
             if(mysqli_num_rows($result) > 0) {
 
@@ -179,8 +179,8 @@
                             <div class="product">
                                 <img src="<?php echo $row["img"]; ?>" class="img-responsive">
                                 <h5 class="text-info"><?php echo $row["name"]; ?></h5>
-                                <h5 class="text-danger"><?php echo $row["price"]; ?></h5>
-                                <input  name="quantity"  value="1">
+                                <h5 class="text-danger"><?php echo "₹" . $row["price"]; ?></h5>
+                                <input type="text" name="quantity"  value="1">
                                 <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
                                 <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>">
                                 <input type="submit" name="add" style="margin-top: 5px;" class="btn btn-success"
@@ -206,12 +206,6 @@
 
 
     <!-- Subscribe section -->
-    <div class="w3-container w3-black w3-padding-32">
-      <h1>Subscribe</h1>
-      <p>To get special offers and VIP treatment:</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
-      <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
-    </div>
 
     <!-- Footer -->
     <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
@@ -219,7 +213,7 @@
         <div class="w3-col s4">
           <h4>Contact</h4>
           <p>Questions? Go ahead.</p>
-          <form action="/action_page.php" target="_blank">
+          <form action="http://localhost/wdl/action_page.php" method="post">
             <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
             <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
             <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
@@ -243,9 +237,9 @@
 
         <div class="w3-col s4 w3-justify">
           <h4>Store</h4>
-          <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
+          <p><i class="fa fa-fw fa-map-marker"></i> BUG</p>
           <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-          <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
+          <p><i class="fa fa-fw fa-envelope"></i> BUG@Gmail.com</p>
           <h4>We accept</h4>
           <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
           <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
@@ -260,14 +254,8 @@
       </div>
     </footer>
 
-    <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp"
-        title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
-
-    <!-- End page content -->
-  </div>
-
   <!-- Newsletter Modal -->
-  <form action="http://localhost/wdl/uv.php" method="POST">
+  <form action="http://localhost/wdl/newsletter.php" method="POST">
     <div id="newsletter" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
       <div class="w3-container w3-white w3-center">
@@ -284,18 +272,6 @@
   </from>
 
   <script>
-    // Accordion 
-    function myAccFunc() {
-      var x = document.getElementById("demoAcc");
-      if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-      } else {
-        x.className = x.className.replace(" w3-show", "");
-      }
-    }
-
-    // Click on the "Jeans" link on page load to open the accordion for demo purposes
-    document.getElementById("myBtn").click();
 
 
     // Open and close sidebar
