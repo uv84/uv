@@ -112,7 +112,7 @@
   <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
     <div class="w3-container w3-display-container w3-padding-16">
       <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-      <h3 class="w3-wide"><b>BUG</b></h3>
+      <h3 class="w3-wide "><b>BUG</b></h3>
     </div>
     <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
       <a href="http://localhost/wdl/index.php" class="w3-bar-item w3-button">Home</a>
@@ -147,18 +147,20 @@
     <header class="w3-container w3-xlarge">
       <p class="w3-left">Home</p>
       <p class="w3-right">
-        <a href="http://localhost/wdl/mycart.php">
-        <i class="fa fa-shopping-cart w3-margin-right"></i>
-        <?php
-        
-        if(isset($_SESSION["name"])) { 
+      <p class="w3-right"><a href="http://localhost/wdl/mycart.php"><span><i class="fa fa-shopping-cart w3-margin-right w3-bar-item w3-button"  ></i></span></a></li>
 
-          echo   "Hi " . $_SESSION["name"] . " !" ;
-        }
-        else {
-          echo '<a href="account.php"><span>Login/Register</span></a></li>';
-        }
-        ?>
+<?php
+  
+  if(isset($_SESSION["name"])) { 
+
+    echo   "Hi " . $_SESSION["name"] . " !" ;
+    echo '<a href="http://localhost/wdl/signout_link.php"><span><i class="fa fa-sign-out w3-bar-item w3-button" aria-hidden="true" ></i></span></a></li>' ;
+
+  }
+  else {
+    echo '<a href="account.php"><i class="fa fa-sign-in w3-bar-item w3-button" aria-hidden="true" ></i><span>Login/Register</span></a></li>';
+  }
+  ?>
       </p>
     </header>
 
