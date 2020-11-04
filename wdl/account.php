@@ -17,21 +17,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><b>LOGO</b></h3>
+    <h3 class="w3-wide"><b>BUG</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="http://localhost/wdl/home.php" class="w3-bar-item w3-button">Home</a>
+    <a href="http://localhost/wdl/index.php" class="w3-bar-item w3-button">Home</a>
     <a href="http://localhost/wdl/account.php" class="w3-button w3-block w3-white w3-left-align">Account</a>
     <a href="http://localhost/wdl/orders.php" class="w3-bar-item w3-button">Your Oders</a>
-    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-bar-item w3-button" >
-      Jeans
-    </a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Skinny</a>
-      <a href="#" class="w3-bar-item w3-button">Relaxed</a>
-      <a href="#" class="w3-bar-item w3-button">Bootcut</a>
-      <a href="#" class="w3-bar-item w3-button">Straight</a>
-    </div>
     <a href="http://localhost/wdl/mycart.php" class="w3-bar-item w3-button">My Cart</a>
   </div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
@@ -41,7 +32,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
+  <div class="w3-bar-item w3-padding-24 w3-wide">BUG</div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
 
@@ -57,8 +48,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">Register</p>
-    <p class="w3-right">
-    <i href="http://localhost/wdl/mycart.php" class="fa fa-shopping-cart w3-margin-right" ></i>
+    
     </p>
   </header>
 
@@ -139,10 +129,11 @@ a {
     <input type="text" placeholder="Enter Email" name="email" id="user_name" required>
 
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    <input type="password" placeholder="Enter Password" name="password" id="password"  onkeyup="check();" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="password_confirm" id="password-repeat" required>
+    <input type="password" placeholder="Repeat Password" name="password_confirm" id="password-repeat" onkeyup="check();" required>
+    <span id='message'></span>
     <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
@@ -154,7 +145,18 @@ a {
   </div>
 </form>
 
-
+<script>
+var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById("password-repeat").value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
 
  
 
