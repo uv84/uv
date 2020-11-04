@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION["id"])) {
+  $s_userid = $_SESSION["id"];
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <title>Order</title>
@@ -17,10 +24,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><b>LOGO</b></h3>
+    <h3 class="w3-wide"><b>BUG</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="/index.php" class="w3-bar-item w3-button">Home</a>
+    <a href="http://localhost/wdl/index.php" class="w3-bar-item w3-button">Home</a>
     <a href="/account" class="w3-bar-item w3-button">Account</a>
     <a href="/orders" class="w3-button w3-block w3-white w3-left-align">Your Oders</a>
     <a href="/mycart" class="w3-bar-item w3-button">My Cart</a>
@@ -32,7 +39,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
+  <div class="w3-bar-item w3-padding-24 w3-wide">BUG</div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
 
@@ -47,6 +54,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
+  <p class="w3-left">Orders</p>
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
       <?php
@@ -65,18 +73,42 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 
 
-<h1>this is order section</h1>
 
 
+<div style="clear: both"></div>
+<div class="table-responsive">
 
+    <table class="table table-bordered">
+      <tr>
+        <th width="30%">Product Name</th>
+        <th width="10%">Quantity</th>
+        <th width="13%">Price Details</th>
+        <th width="10%">Total Price</th>
+        <th width="17%">Remove Item</th>
+      </tr>
+      <?php
+      $con = mysqli_connect('127.0.0.1:3306','root','uv84','dbms') or die('Unable To connect');
+      $result = mysqli_query($con,"SELECT * FROM user_orders WHERE user_id='" . $s_userid . "'  ");
+      if(mysqli_num_rows($result) > 0){
+      
+        while ($row  = mysqli_fetch_array($result)) {
+          ?>
 
+          <tr>
+            <td><?php echo $row["product_name"]; ?></td>
+            <td><?php echo $row["product_quantity"]; ?></td>
+            <td>₹ <?php echo $row["product_price"]; ?></td>
 
-
-
-
-
-  <!-- End page content -->
+          </tr>
+        <?php
+        } 
+    
+      }?>
+          
+        
+    </table>
 </div>
+  <!-- End page content -->
 
 <!-- Newsletter Modal -->
 <div id="newsletter" class="w3-modal">
