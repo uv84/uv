@@ -82,9 +82,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <tr>
         <th width="30%">Product Name</th>
         <th width="10%">Quantity</th>
-        <th width="13%">Price Details</th>
+        <th width="13%">Price</th>
         <th width="10%">Total Price</th>
-        <th width="17%">Remove Item</th>
+        <th width="17%">date</th>
       </tr>
       <?php
       $con = mysqli_connect('127.0.0.1:3306','root','uv84','dbms') or die('Unable To connect');
